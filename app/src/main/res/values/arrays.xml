@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="subjects">  <item>@string/german_text</item>
+        <item>@string/english_text</item>
+        <item>@string/german_text</item>
+        <item>@string/french_text</item>
+        <item>@string/spanish_text</item>
+        <item>@string/italian_text</item>
+        <item>@string/latin_text</item>
+        <item>@string/greek_text</item>
+        <item>@string/russian_text</item>
+        <item>@string/chinese_text</item>
+        <item>@string/music_text</item>
+        <item>@string/art_text</item>
+        <item>@string/performing_arts_text</item>
+        <item>@string/history_text</item>
+        <item>@string/social_science_text</item>
+        <item>@string/politics_text</item>
+        <item>@string/economics_text</item>
+        <item>@string/politics_economics_text</item>
+        <item>@string/consumer_rights_text</item>
+        <item>@string/ethics_text</item>
+        <item>@string/religion_text</item>
+        <item>@string/philosophie_text</item>
+        <item>@string/pedagogy_text</item>
+        <item>@string/geography_text</item>
+        <item>@string/social_science_text</item>
+        <item>@string/mathematics_text</item>
+        <item>@string/physics_text</item>
+        <item>@string/chemistry_text</item>
+        <item>@string/biology_text</item>
+        <item>@string/computer_science_text</item>
+        <item>@string/engineering_text</item>
+        <item>@string/astronomy_astrophysics_text</item>
+        <item>@string/nutrition_text</item>
+        <item>@string/sport_text</item>
+
+    </string-array>
+    <string-array name="colors" />
+    <string-array name="images" >
+        <item>@drawable/blue</item>
+
+    </string-array>
+</resources>
