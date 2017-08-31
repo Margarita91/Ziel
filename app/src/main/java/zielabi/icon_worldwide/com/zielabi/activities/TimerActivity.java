@@ -14,7 +14,8 @@ import android.widget.TextView;
 import zielabi.icon_worldwide.com.zielabi.R;
 import zielabi.icon_worldwide.com.zielabi.databinding.ActivityTimerBinding;
 import zielabi.icon_worldwide.com.zielabi.utils.ActivityAnimationUtils;
-import zielabi.icon_worldwide.com.zielabi.utils.PathDrawable;
+import zielabi.icon_worldwide.com.zielabi.utils.Circle;
+import zielabi.icon_worldwide.com.zielabi.utils.CircleAngleAnimation;
 import zielabi.icon_worldwide.com.zielabi.views.TimerView;
 
 /**
@@ -23,7 +24,6 @@ import zielabi.icon_worldwide.com.zielabi.views.TimerView;
 
 public class TimerActivity extends AppCompatActivity {
     private TimerView mOutsideCircle;
-    private TimerView mInsideCircle;
     private ActivityTimerBinding binding;
     private ImageView button_test;
     private TextView mCounterTextView;
@@ -37,12 +37,15 @@ public class TimerActivity extends AppCompatActivity {
         mOutsideCircle = binding.circleOutside;
         mCounterTextView = binding.txtCounter;
         mContinueTextView = binding.txtContinue;
-        mInsideCircle = binding.circleInside;
+        Circle circle = binding.circle;
 
-
-        if (mInsideCircle != null) {
-            mInsideCircle.drawProgress(60);
-        }
+        CircleAngleAnimation animation = new CircleAngleAnimation(circle, 360);
+        animation.setDuration(1500);
+        circle.startAnimation(animation);
+//
+//        if (mOutsideCircle != null) {
+//            mOutsideCircle.drawProgress(1);
+//        }
 
         button_test = binding.buttonScale;
 
