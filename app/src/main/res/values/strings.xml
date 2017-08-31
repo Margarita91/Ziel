@@ -127,6 +127,7 @@
     <string name="select_state">Select Your State</string>
     <string name="set_abi">Set your target ABI</string>
     <string name="scip">Skip</string>
+    <string name="preferences">Preferences</string>
 
 
 </resources>

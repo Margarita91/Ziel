@@ -50,7 +50,14 @@ public class MainActivity extends AppCompatActivity {
     private String mUserCurrentCityName;
     private ArrayList<State> mUserStatesArrayList = new ArrayList<>();
     private ActivityMainBinding binding;
-;
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ActivityAnimationUtils.goBackAnimation(MainActivity.this);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
@@ -127,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, TimerActivity.class);
                 startActivity(intent);
                 ActivityAnimationUtils.startActivityAnimation(MainActivity.this);
-                MainActivity.this.finish();
+
             }
         });
     }

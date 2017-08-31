@@ -1,5 +1,6 @@
 package zielabi.icon_worldwide.com.zielabi.views;
 
+import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -13,6 +14,9 @@ import android.graphics.RectF;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
+
+import java.util.concurrent.TimeUnit;
 
 import zielabi.icon_worldwide.com.zielabi.R;
 
@@ -24,7 +28,7 @@ public class TimerView extends View {
 
     private static final int ARC_START_ANGLE = 270; // 12 o'clock
     private static final float THICKNESS_SCALE = 0.020f;
-    private static final float THICKNESS_SCALE_MAIN = 0.040f;
+    private static final float THICKNESS_SCALE_MAIN = 0.030f;
     private Bitmap mBitmap;
     private Canvas mCanvas;
     private RectF mCircleOuterBounds;
@@ -33,8 +37,8 @@ public class TimerView extends View {
     private Paint mEraserPaint;
     private Boolean mIsMain = false;
     private float mCircleSweepAngle;
-
-    //private ValueAnimator mTimerAnimator;
+    private float angle;
+    private ValueAnimator mTimerAnimator;
 
     public TimerView(Context context) {
         this(context, null);
@@ -56,7 +60,7 @@ public class TimerView extends View {
                 ta.recycle();
             }
         }
-
+        angle = 0;
         mCirclePaint = new Paint();
         mCirclePaint.setAntiAlias(true);
         mCirclePaint.setColor(circleColor);
@@ -66,7 +70,13 @@ public class TimerView extends View {
         mEraserPaint.setColor(Color.TRANSPARENT);
         mEraserPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
     }
+    public float getAngle() {
+        return angle;
+    }
 
+    public void setAngle(float angle) {
+        this.angle = angle;
+    }
     @SuppressWarnings("SuspiciousNameCombination")
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -98,22 +108,22 @@ public class TimerView extends View {
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public void start(int secs) {
+    public void start(int secs, float length) {
         stop();
 
 
         // TODO: 2/4/16 mi dzev pti nkarvi
-//        mTimerAnimator = ValueAnimator.ofFloat(0f, 1f);
-//        mTimerAnimator.setDuration(TimeUnit.SECONDS.toMillis(secs));
-//        mTimerAnimator.setInterpolator(new LinearInterpolator());
-//        mTimerAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-//            @Override
-//            public void onAnimationUpdate(ValueAnimator animation) {
-//                drawProgress((float) animation.getAnimatedValue());
-//
-//            }
-//        });
-//        mTimerAnimator.start();
+        mTimerAnimator = ValueAnimator.ofFloat(0f, length);
+        mTimerAnimator.setDuration(TimeUnit.SECONDS.toMillis(secs));
+        mTimerAnimator.setInterpolator(new LinearInterpolator());
+        mTimerAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                drawProgress((float) animation.getAnimatedValue());
+
+            }
+        });
+        mTimerAnimator.start();
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)

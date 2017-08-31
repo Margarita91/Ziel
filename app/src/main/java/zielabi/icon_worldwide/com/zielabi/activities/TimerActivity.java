@@ -12,10 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import zielabi.icon_worldwide.com.zielabi.R;
+import zielabi.icon_worldwide.com.zielabi.databinding.ActivityTargetAbiBinding;
 import zielabi.icon_worldwide.com.zielabi.databinding.ActivityTimerBinding;
 import zielabi.icon_worldwide.com.zielabi.utils.ActivityAnimationUtils;
-import zielabi.icon_worldwide.com.zielabi.utils.Circle;
 import zielabi.icon_worldwide.com.zielabi.utils.CircleAngleAnimation;
+import zielabi.icon_worldwide.com.zielabi.views.Circle;
 import zielabi.icon_worldwide.com.zielabi.views.TimerView;
 
 /**
@@ -24,10 +25,17 @@ import zielabi.icon_worldwide.com.zielabi.views.TimerView;
 
 public class TimerActivity extends AppCompatActivity {
     private TimerView mOutsideCircle;
+    private TimerView mInsideCircle;
     private ActivityTimerBinding binding;
     private ImageView button_test;
     private TextView mCounterTextView;
     private TextView mContinueTextView;
+    private ImageView mButtonBack;
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        ActivityAnimationUtils.goBackAnimation(TimerActivity.this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +43,23 @@ public class TimerActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_timer);
 
         mOutsideCircle = binding.circleOutside;
+        mInsideCircle = binding.circleInside;
         mCounterTextView = binding.txtCounter;
         mContinueTextView = binding.txtContinue;
-        Circle circle = binding.circle;
 
-        CircleAngleAnimation animation = new CircleAngleAnimation(circle, 360);
-        animation.setDuration(1500);
-        circle.startAnimation(animation);
-//
-//        if (mOutsideCircle != null) {
-//            mOutsideCircle.drawProgress(1);
-//        }
+        mButtonBack = binding.headerSecondary.buttonBack;
+        mButtonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
 
+            }
+        });
+
+        mInsideCircle.start(1, 1f);
+        if (mOutsideCircle != null) {
+            mOutsideCircle.start(1, 0.01f);
+        }
         button_test = binding.buttonScale;
 
         button_test.setOnTouchListener(new View.OnTouchListener() {
@@ -60,7 +73,7 @@ public class TimerActivity extends AppCompatActivity {
                 double positionFloat = 4.0 - centerPoint.x * 3.0 / maxX;
                 int positionInteger = (int) (positionFloat * 10);
                 mCounterTextView.setText(positionInteger / 10.0 + "");
-                mOutsideCircle.drawProgressMinute((int) (centerPoint.x * 60/ (maxX - 50)+1),true);
+                mOutsideCircle.drawProgressMinute((int) (centerPoint.x * 60 / (maxX - 50) + 1), true);
 
 
                 switch (event.getAction()) {
@@ -81,7 +94,7 @@ public class TimerActivity extends AppCompatActivity {
                 Intent intent = new Intent(TimerActivity.this, TargetABIActivity.class);
                 startActivity(intent);
                 ActivityAnimationUtils.startActivityAnimation(TimerActivity.this);
-                TimerActivity.this.finish();
+
             }
         });
     }
@@ -100,4 +113,6 @@ public class TimerActivity extends AppCompatActivity {
         int y = location[1] + view.getHeight() / 2;
         return new Point(x, y);
     }
+
+
 }
