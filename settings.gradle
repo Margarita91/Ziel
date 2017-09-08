@@ -1,1 +1,3 @@
-include ':app', ':bubblepicker'
+include ':app', ':bubblepicker', ':wheelview'
+include ':wheel'
+include ':wheel'

@@ -1,52 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="zielabi.icon_worldwide.com.zielabi.activities.MainActivity">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <include android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        layout="@layout/header"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_states"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_gravity="center_horizontal"
-        app:stackFromEnd="false"
-        android:clipToPadding="false"
-        android:background="@color/colorPrimary"
-        android:scrollbars="none" />
+        android:orientation="vertical"
+        tools:context="zielabi.icon_worldwide.com.zielabi.activities.MainActivity">
 
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="@color/white"
-        android:layout_weight="0"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/button_continue"
-            android:layout_width="wrap_content"
+        <include
+            android:id="@+id/header"
+            layout="@layout/header"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:textSize="14sp"
-            android:layout_centerInParent="true"
-            android:text="@string/continue_"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center"
-            android:background="@drawable/button_rounded_orange" />
-    </RelativeLayout>
+            android:layout_weight="0"/>
 
-</LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_states"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:choiceMode="singleChoice"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_weight="0"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/button_continue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/button_rounded_orange"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingTop="10dp"
+                android:text="@string/continue_"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"/>
+        </RelativeLayout>
+
+    </LinearLayout>
 </layout>

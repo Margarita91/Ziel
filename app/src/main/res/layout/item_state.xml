@@ -3,9 +3,10 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="70dp"
     android:text="Berlin"
+          android:id="@+id/state_name"
     android:textSize="16sp"
-    android:gravity="center_vertical"
     android:paddingLeft="10dp"
+          android:layout_gravity="center"
     android:textColor="@color/prime_blue">
 
 </TextView>

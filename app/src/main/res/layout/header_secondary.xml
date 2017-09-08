@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:orientation="vertical"
     android:background="@color/colorPrimary"
-    >
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
 
     <ImageView
-        android:id="@+id/button_back"
-        android:padding="15dp"
+        android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -23,9 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/set_abi"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold" />
+        fontPath="fonts/avenir-next-bold.ttf" />
 
 
     <ImageView
@@ -35,8 +33,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:padding="15dp"
         android:src="@drawable/home_icon_trans" />
 
 </RelativeLayout>
-    </layout>
+</layout>

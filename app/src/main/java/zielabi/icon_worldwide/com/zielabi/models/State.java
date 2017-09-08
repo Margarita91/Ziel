@@ -25,8 +25,11 @@ public class State {
     private int mWrittenFactorLimit;
     private boolean mIsAutoAssignFactor;
     private AssignFactor mAssignFactorTo;
+    private boolean mIsMagic;
     public State(){}
-
+    public State(String stateName){
+        mStateName = stateName;
+    }
     public State(String stateName, int writtenLimit, int oralLimit, int optionalOralLimit, double semesterGrades, double maxSemesterGrades,
                  int examMultiplier, boolean isBllState, String bllReplaces, boolean projectState, boolean projectIsOptional,
                  int projectFactor, boolean isAdditionalOralState, boolean isPresentationState, CourseMultiplier examCourseFactor, int writtenFactorLimit,
@@ -50,7 +53,13 @@ public class State {
         mIsAutoAssignFactor = isAutoAssignFactor;
         mAssignFactorTo = assignFactorTo;
     }
+    public boolean isMagic() {
+        return mIsMagic;
+    }
 
+    public void setMagic(boolean magic) {
+        this.mIsMagic = magic;
+    }
     public String getStateName() {
         return mStateName;
     }
