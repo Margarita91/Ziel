@@ -64,7 +64,7 @@ public class StatesAdapter extends RecyclerView.Adapter<StatesAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return mDataset.size()+100;
     }
 }
 

@@ -16,7 +16,6 @@ import zielabi.icon_worldwide.com.zielabi.databinding.ActivityTargetAbiBinding;
 import zielabi.icon_worldwide.com.zielabi.databinding.ActivityTimerBinding;
 import zielabi.icon_worldwide.com.zielabi.utils.ActivityAnimationUtils;
 import zielabi.icon_worldwide.com.zielabi.utils.CircleAngleAnimation;
-import zielabi.icon_worldwide.com.zielabi.views.Circle;
 import zielabi.icon_worldwide.com.zielabi.views.TimerView;
 
 /**

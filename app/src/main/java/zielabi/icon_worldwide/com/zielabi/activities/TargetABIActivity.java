@@ -52,8 +52,8 @@ public class TargetABIActivity extends AppCompatActivity implements View.OnClick
 //        }
 //                item.setGradient(new BubbleGradient(colors.getColor((position * 2) % 8, 0),
 //                        colors.getColor((position * 2) % 8 + 1, 0), BubbleGradient.VERTICAL));
-        mBubblePicker.setTextSize(22);
-        mBubblePicker.setTextColor(ContextCompat.getColor(TargetABIActivity.this, android.R.color.white));
+//        mBubblePicker.setTextSize(22);
+//        mBubblePicker.setTextColor(ContextCompat.getColor(TargetABIActivity.this, android.R.color.white));
         mBubblePicker.setBubbleSize(30);
         mBubblePicker.setAdapter(new BubblePickerAdapter() {
             @Override
