@@ -5,6 +5,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import zielabi.icon_worldwide.com.zielabi.models.AssignFactor;
 import zielabi.icon_worldwide.com.zielabi.models.CourseMultiplier;
 import zielabi.icon_worldwide.com.zielabi.models.State;
@@ -20,8 +21,11 @@ public class ZielAbiApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/roboto_regular.ttf");
         ZielAbiApplication.context = getApplicationContext();
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/avenir-next-regular.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build());
     }
 
 

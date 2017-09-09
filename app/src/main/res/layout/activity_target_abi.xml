@@ -1,28 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
-            android:orientation="vertical">
+        <include
+            android:id="@+id/header_secondary"
+            layout="@layout/header_secondary"/>
 
-            <include
-                android:id="@+id/header_secondary"
-                layout="@layout/header_secondary" />
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fillViewport="true">
+
             <com.igalata.bubblepicker.rendering.BubblePicker
                 android:id="@+id/picker"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:backgroundColor="@android:color/white" />
-            </HorizontalScrollView>
-        </LinearLayout>
+                app:backgroundColor="@color/colorPrimary"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_weight="0"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/button_continue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="-100dp"
+                android:background="@drawable/button_rounded_orange"
+                android:paddingBottom="10dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingTop="10dp"
+                android:text="@string/continue_"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"/>
+        </RelativeLayout>
+    </LinearLayout>
 
 </layout>

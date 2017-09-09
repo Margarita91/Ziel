@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:app1="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app1="http://schemas.android.com/apk/res-auto"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,8 +16,6 @@
         android:background="@color/colorPrimary">
         <include
             android:id="@+id/header_secondary"
-            android:layout_height="60dp"
-            android:layout_width="match_parent"
             layout="@layout/header_secondary" />
 
         <FrameLayout
@@ -30,28 +27,28 @@
             android:orientation="vertical">
 
             <zielabi.icon_worldwide.com.zielabi.views.TimerView
-                android:id="@+id/circle_outside"
-                android:layout_width="260dp"
-                android:layout_height="260dp"
+                android:id="@+id/circleOutside"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
                 android:layout_gravity="center"
                 android:background="@drawable/ic_timer_background_white"
                 app1:circleColor="@color/prime_blue" />
 
-
             <zielabi.icon_worldwide.com.zielabi.views.TimerView
-                android:id="@+id/circle_inside"
                 android:layout_width="230dp"
+                android:id="@+id/circleInside"
                 android:layout_height="230dp"
                 android:layout_gravity="center"
-                android:background="@drawable/ic_timer_background_white"
-                app1:circleColor="@color/prime_orange" />
+                app1:circleColor="@color/prime_orange"
+                android:src="@drawable/ic_timer_background" />
+
             <TextView
                 android:id="@+id/txt_counter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="4.0"
-                android:textStyle="bold"
+                fontPath="fonts/avenir-next-bold.ttf"
                 android:textAlignment="center"
                 android:textColor="@color/prime_blue"
                 android:textSize="60sp" />

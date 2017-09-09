@@ -24,7 +24,7 @@ allprojects {
 
         }
         jcenter()
-        mavenCentral()
+
 
     }
 }

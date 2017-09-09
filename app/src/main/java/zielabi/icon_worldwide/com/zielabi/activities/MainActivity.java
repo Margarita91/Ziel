@@ -16,6 +16,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 import zielabi.icon_worldwide.com.zielabi.Constants;
 import zielabi.icon_worldwide.com.zielabi.R;
 import zielabi.icon_worldwide.com.zielabi.ZielAbiApplication;
@@ -37,27 +40,33 @@ import zielabi.icon_worldwide.com.zielabi.adapters.StatesAdapter;
 import zielabi.icon_worldwide.com.zielabi.databinding.ActivityMainBinding;
 import zielabi.icon_worldwide.com.zielabi.models.State;
 import zielabi.icon_worldwide.com.zielabi.utils.ActivityAnimationUtils;
+import zielabi.icon_worldwide.com.zielabi.utils.RecyclerTouchListener;
 import zielabi.icon_worldwide.com.zielabi.utils.ZoomCenterItemLayoutManager;
 
 import static java.security.AccessController.getContext;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 2;
     private RecyclerView mStatesRecyclerView;
     private RecyclerView.Adapter mAdapter;
-    private ZoomCenterItemLayoutManager mLayoutManager;
+    private LinearLayoutManager mLayoutManager;
     private FusedLocationProviderClient mFusedLocationClient;
     private String mUserCurrentCityName;
     private ArrayList<State> mUserStatesArrayList = new ArrayList<>();
     private ActivityMainBinding binding;
+    public List<State> items = new ArrayList<>();
+    private static int START_POSITION = 0;
+    private int mLastSelectedPos = 0;
+    private StatesAdapter mStatesAdapter;
+    private int mItemActualWidth;
+    private int offsetX = 0;
 
 
+    ;
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        ActivityAnimationUtils.goBackAnimation(MainActivity.this);
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
@@ -109,24 +118,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //States List///
-        mStatesRecyclerView= binding.recyclerViewStates;
+        mStatesRecyclerView= binding.recyclerStates;
         mStatesRecyclerView.setHasFixedSize(true);
-
+        initStates();
         // use a custom zooming layout manager
-        mLayoutManager = new ZoomCenterItemLayoutManager(this);
-        mStatesRecyclerView.setLayoutManager(mLayoutManager);
-
-
-        mUserStatesArrayList = Constants.initStatesList();
-
-        mStatesRecyclerView.setAdapter(new StatesAdapter(mUserStatesArrayList, new StatesAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(State item, int position) {
-                mStatesRecyclerView.smoothScrollToPosition(position);
-            }
-
-
-        }));
 
         binding.buttonContinue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, TimerActivity.class);
                 startActivity(intent);
                 ActivityAnimationUtils.startActivityAnimation(MainActivity.this);
-
             }
         });
     }
@@ -189,6 +183,125 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+    }
+    private int dp2px(int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
+                getResources().getDisplayMetrics());
+    }
+    private void initStates() {
+        // ========== TEST DURATION ========== //
+//        min = 50;
+//        max = 950;
+
+
+        int itemsCount = Constants.initStatesList().size();
+        int interval = 1;
+
+        // ========== very bad solution, will be replaced in future ========== //
+        // copy 1000 times
+        for (int j = 0; j < 400; j++) {
+//             init objects with correct values
+            for (int i = 0; i < itemsCount - 1; i++) {
+                items.add(new State(Constants.initStatesList().get(i).getStateName()));
+                interval = interval + 1; // eg 30, 60, 90 ...
+
+            }
+            interval = 1;
+        }
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+
+        int itemWidth = dp2px(((int) displayMetrics.widthPixels) / 5);
+        int itemMarginLeft = dp2px(1);
+        int itemMarginRight = dp2px(1);
+
+        mItemActualWidth = itemWidth + itemMarginLeft + itemMarginRight;
+
+        mStatesAdapter = new StatesAdapter(this, items);
+        mStatesRecyclerView = binding.recyclerStates;
+        mStatesRecyclerView.setAdapter(mStatesAdapter);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mStatesRecyclerView.setLayoutManager(layoutManager);
+
+        START_POSITION = (items.size() / 2) - 2;
+        items.get(START_POSITION + 2).setMagic(true);
+        if (START_POSITION > 0) {
+
+            mStatesRecyclerView.scrollToPosition(START_POSITION);
+
+            int someItemsX = START_POSITION * mItemActualWidth;
+            int correctX = someItemsX + mItemActualWidth / 2;
+            offsetX = correctX;
+        } else {
+            offsetX = mItemActualWidth / 2;
+        }
+
+        mStatesAdapter.setOnDataChangeListener(new StatesAdapter.OnDataChangeListener() {
+
+            @Override
+            public void onDataChanged(int position) {
+                {
+                    if (position != -1) {
+
+
+                    }
+                }
+            }
+        });
+
+        mStatesRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    layoutManager.scrollToPositionWithOffset(mLastSelectedPos - 2, 5); // 8 is experimental value
+
+
+                }
+            }
+        });
+        mStatesRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, mStatesRecyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+
+                mStatesRecyclerView.smoothScrollToPosition(position);
+
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+        mStatesRecyclerView.addOnScrollListener(
+                new RecyclerView.OnScrollListener() {
+                    @Override
+                    public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                        offsetX = offsetX + dx;
+                        int pos = (offsetX / mItemActualWidth) + 2;
+                        if (mLastSelectedPos != pos) {
+//                    if(items.size()<8) {
+//                        return;
+//                    }
+                            items.get(pos).setMagic(true);
+                            items.get(mLastSelectedPos).setMagic(false); // this is last position
+                            if (!mStatesRecyclerView.isComputingLayout()) {
+                                mStatesAdapter.notifyDataSetChanged();
+
+                            }
+
+
+                            mLastSelectedPos = pos;
+
+                        }
+
+                        //System.out.println("current = " + mLastSelectedPos);
+                        //System.out.println("******pos = " + pos);
+
+                    }
+                }
+
+        );
+
+        // ========== END OF TESTING ========== //
     }
     public void dialog(Context context) {
         float dpi = this.getResources().getDisplayMetrics().density;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
     android:orientation="vertical" android:layout_width="match_parent"
     android:background="@color/colorPrimary"
     android:layout_height="match_parent">
@@ -7,15 +8,16 @@
 
     <TextView
         android:id="@+id/header_title"
-         android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/select_state"
         android:gravity="center"
-        android:textStyle="bold"
         android:textSize="18sp"
         android:padding="20dp"
+        fontPath="fonts/avenir-next-bold.ttf"
         android:textColor="@color/colorPrimaryDark">
 
     </TextView>
 
 </LinearLayout>
+</layout>

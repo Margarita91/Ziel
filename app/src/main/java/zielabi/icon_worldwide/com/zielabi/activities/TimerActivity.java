@@ -5,24 +5,21 @@ import android.databinding.DataBindingUtil;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import zielabi.icon_worldwide.com.zielabi.R;
-import zielabi.icon_worldwide.com.zielabi.databinding.ActivityTargetAbiBinding;
 import zielabi.icon_worldwide.com.zielabi.databinding.ActivityTimerBinding;
 import zielabi.icon_worldwide.com.zielabi.utils.ActivityAnimationUtils;
-import zielabi.icon_worldwide.com.zielabi.utils.CircleAngleAnimation;
 import zielabi.icon_worldwide.com.zielabi.views.TimerView;
 
 /**
  * Created by margarita on 8/26/17.
  */
 
-public class TimerActivity extends AppCompatActivity {
+public class TimerActivity extends BaseActivity {
     private TimerView mOutsideCircle;
     private TimerView mInsideCircle;
     private ActivityTimerBinding binding;
@@ -56,9 +53,11 @@ public class TimerActivity extends AppCompatActivity {
         });
 
         mInsideCircle.start(1, 1f);
+
         if (mOutsideCircle != null) {
             mOutsideCircle.start(1, 0.01f);
         }
+
         button_test = binding.buttonScale;
 
         button_test.setOnTouchListener(new View.OnTouchListener() {
