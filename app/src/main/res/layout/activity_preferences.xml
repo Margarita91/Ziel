@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:app="http://schemas.android.com/tools"
+        xmlns:app1="http://schemas.android.com/apk/res-auto"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:background="@color/colorPrimary">
+
+            <include
+                android:id="@+id/header_secondary"
+                layout="@layout/header_secondary"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/header_secondary">
+
+
+                <LinearLayout
+                    android:id="@+id/layout_ripple"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/prime_orange"
+                    android:orientation="vertical"
+                    android:visibility="invisible"/>
+
+                <LinearLayout
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_ask"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/are_you_taking_text"
+                        android:textAlignment="center"
+                        android:textColor="@color/prime_blue"
+                        android:textSize="20sp"/>
+                        <com.sevenheaven.iosswitch.ShSwitchView
+                            xmlns:shSwitch="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/switch_view"
+                            android:layout_width="66dip"
+                            android:layout_height="44dip"
+                            android:layout_marginTop="40dp"
+                            android:background="@drawable/ripple"
+                            shSwitch:shadowSpace="4dip"
+                            shSwitch:tintColor="@color/prime_orange"/>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <TextView
+                android:id="@+id/txt_continue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_rounded_blue"
+                android:paddingBottom="10dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingTop="10dp"
+                android:text="@string/continue_"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="14sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

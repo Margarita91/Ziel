@@ -87,6 +87,14 @@ data class Item(val pickerItem: PickerItem, val circleBody: CircleBody) {
         bgPaint.style = Paint.Style.FILL
         pickerItem.color?.let { bgPaint.color = pickerItem.color!! }
         pickerItem.gradient?.let { bgPaint.shader = gradient }
+        if (withImage) bgPaint.alpha = (1).toInt()
+        canvas.drawRect(0f, 0f, bitmapSize, bitmapSize, bgPaint)
+    }
+    private fun drawBackground1(canvas: Canvas, withImage: Boolean) {
+        val bgPaint = Paint()
+        bgPaint.style = Paint.Style.FILL
+        pickerItem.color?.let { bgPaint.color = pickerItem.backgroundImage!! }
+        pickerItem.gradient?.let { bgPaint.shader = gradient }
         if (withImage) bgPaint.alpha = (pickerItem.overlayAlpha * 255).toInt()
         canvas.drawRect(0f, 0f, bitmapSize, bitmapSize, bgPaint)
     }
@@ -146,15 +154,12 @@ data class Item(val pickerItem: PickerItem, val circleBody: CircleBody) {
     }
 
     private fun drawImage(canvas: Canvas) {
-        pickerItem.backgroundImage?.let {
-            val height = (it as BitmapDrawable).bitmap.height.toFloat()
-            val width = it.bitmap.width.toFloat()
-            val ratio = Math.max(height, width) / Math.min(height, width)
-            val bitmapHeight = if (height < width) bitmapSize else bitmapSize * ratio
-            val bitmapWidth = if (height < width) bitmapSize * ratio else bitmapSize
-            it.bounds = Rect(0, 0, bitmapWidth.toInt(), bitmapHeight.toInt())
-            it.draw(canvas)
-        }
+        val bgPaint = Paint()
+        bgPaint.style = Paint.Style.FILL
+        pickerItem.color?.let { bgPaint.color = pickerItem.backgroundImage!! }
+        pickerItem.gradient?.let { bgPaint.shader = gradient }
+
+        canvas.drawRect(0f, 0f, bitmapSize, bitmapSize, bgPaint)
     }
 
     private fun bindTexture(textureIds: IntArray, index: Int, withImage: Boolean): Int {

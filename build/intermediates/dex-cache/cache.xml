@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/margarita/Desktop/ZielAbi 3/bubblepicker/build/intermediates/bundles/default/libs/slf4j-api-1.7.22.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d0d5b842073f5861a3c9628205ebcfced125748c">
+        <dex dex="/Users/margarita/Desktop/ZielAbi 3/app/build/intermediates/transforms/dex/debug/folders/1000/8/slf4j-api-1.7.22_cdf8b628bf35dfae4e8b3a3be97485892d77888f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/margarita/Desktop/ZielAbi 3/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="dc8778bcc6003536a6daecb44e2bab01af5b5f23">
+        <dex dex="/Users/margarita/Desktop/ZielAbi 3/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_ff06cd8e5b6be3ea8dcf899d7e8a1b6aab67307e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/margarita/Desktop/ZielAbi 3/bubblepicker/build/intermediates/bundles/default/libs/jbox2d-library-2.1.2.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="2c402f35264b3dcadec2d9b1dbd747313e47df21">
+        <dex dex="/Users/margarita/Desktop/ZielAbi 3/app/build/intermediates/transforms/dex/debug/folders/1000/8/jbox2d-library-2.1.2.2_5e68a0ca278f6efb1d949fc43464faba475a556d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/margarita/Desktop/ZielAbi 3/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/margarita/Desktop/ZielAbi 3/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_1134d4a489ae42eae98a41bb2a54cf40ed5dd028/classes.dex" />
+    </item>
+
+</items>

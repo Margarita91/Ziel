@@ -1,10 +1,12 @@
 package zielabi.icon_worldwide.com.zielabi.models;
 
+import java.io.Serializable;
+
 /**
  * Created by margarita on 23/08/2017.
  */
 
-public class AssignFactor
+public class AssignFactor implements Serializable
 {
     private int mNoWritten;
     private int mNoWrittenOral;

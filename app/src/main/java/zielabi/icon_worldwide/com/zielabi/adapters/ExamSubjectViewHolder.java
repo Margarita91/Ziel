@@ -1,6 +1,5 @@
 package zielabi.icon_worldwide.com.zielabi.adapters;
 
-import android.support.v7.widget.LinearLayoutManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;

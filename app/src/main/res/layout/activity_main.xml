@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@color/colorPrimary"
         tools:context="zielabi.icon_worldwide.com.zielabi.activities.MainActivity">
 
         <include
@@ -15,12 +16,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"/>
-
+        <com.wx.wheelview.widget.WheelView
+            android:id="@+id/simple_wheelview"
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:paddingLeft="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_states"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:visibility="gone"
             android:choiceMode="singleChoice"/>
 
         <RelativeLayout

@@ -84,7 +84,7 @@
     <string name="name_scenario_text">Please give your scenario a name to save it.</string>
     <string name="save_text">Save</string>
     <string name="save_scenario_text">Save Scenario</string>
-    <string name="are_you_taking_text">Are you taking</string>
+    <string name="are_you_taking_text">Are you taking \n Besondere Lernleistung?</string>
     <string name="a_seminar_thesis_text">a Seminar Thesis</string>
     <string name="rules_text">Rules</string>
     <string name="calculation_text">Calculation</string>
@@ -94,7 +94,9 @@
     <string name="written_exam_text">Written Exam</string>
     <string name="additional_oral_exam_text">Ad. Mund Exam</string>
     <string name="oral_exam_text">Mund Exam</string>
-    <string name="written_with_opt_oral_text">Written with Opt. Oral Exam</string>
+    <string name="written_with_opt_oral_text">Written + Opt. Oral</string>
+    <string name="oral_text">Oral</string>
+
     <string name="course_not_used_text">Course is not used in the calculation</string>
     <string name="exam_text">Exam</string>
     <string name="exam_grade_text">Exam Grade</string>
@@ -125,6 +127,7 @@
     <string name="continue_">Continue</string>
 
     <string name="select_state">Select Your State</string>
+    <string name="select_subjects">Select Your Subjects</string>
     <string name="set_abi">Set your target ABI</string>
     <string name="scip">Skip</string>
     <string name="preferences">Preferences</string>

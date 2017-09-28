@@ -72,7 +72,7 @@ public abstract class BaseWheelAdapter<T> extends BaseAdapter {
 
     @Override
     public boolean areAllItemsEnabled() {
-        return mClickable ? false : true;
+        return mClickable ? true : true;
     }
 
     @Override
@@ -88,7 +88,7 @@ public abstract class BaseWheelAdapter<T> extends BaseAdapter {
                 }
             }
         }
-        return false;
+        return true;
     }
 
     @Override

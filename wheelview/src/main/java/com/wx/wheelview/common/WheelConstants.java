@@ -37,7 +37,7 @@ public class WheelConstants {
     /**
      * 滚轮每一项的内部控件外边距
      */
-    public static final int WHEEL_ITEM_MARGIN = 40;
+    public static final int WHEEL_ITEM_MARGIN = 10;
 
     /**
      * 滚轮每一项的图片TAG
@@ -57,7 +57,7 @@ public class WheelConstants {
     /**
      * 默认背景
      */
-    public static final int WHEEL_BG = Color.parseColor("#f2f2f2");
+    public static final int WHEEL_BG = Color.WHITE;
 
     /**
      * common皮肤默认背景
@@ -77,22 +77,22 @@ public class WheelConstants {
     /**
      * 滚轮item高度
      */
-    public static final int WHEEL_ITEM_HEIGHT = 60;
+    public static final int WHEEL_ITEM_HEIGHT = 35;
 
     /**
      * 滚轮默认文本颜色
      */
-    public static final int WHEEL_TEXT_COLOR = Color.parseColor("#00000");
+    public static final int WHEEL_TEXT_COLOR = Color.parseColor("#094779");
 
     /**
      * 滚轮默认文本大小
      */
-    public static final int WHEEL_TEXT_SIZE = 18;
-
+    public static final int WHEEL_TEXT_SIZE = 16;
+    public static final int WHEEL_TEXT_SIZE_SELECTED = 20;
     /**
      * 滚轮默认文本透明度
      */
-    public static final float WHEEL_TEXT_ALPHA = 1f;
+    public static final float WHEEL_TEXT_ALPHA = 1.0f;
 
     /**
      * common皮肤默认选中框颜色
@@ -112,12 +112,12 @@ public class WheelConstants {
     /**
      * 滚轮滑动时展示选中项
      */
-    public static final int WHEEL_SCROLL_HANDLER_WHAT = 0x0500;
+    public static final int WHEEL_SCROLL_HANDLER_WHAT = 0x0100;
 
     /**
      * 滚轮滑动时展示选中项延迟时间
      */
-    public static final int WHEEL_SCROLL_DELAY_DURATION = 600;
+    public static final int WHEEL_SCROLL_DELAY_DURATION = 300;
 
     /**
      * dialog默认颜色

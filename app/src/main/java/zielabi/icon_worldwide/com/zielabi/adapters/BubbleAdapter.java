@@ -10,9 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.igalata.bubblepicker.BubblePickerListener;
 import com.igalata.bubblepicker.adapter.BubblePickerAdapter;
 import com.igalata.bubblepicker.model.PickerItem;
 import com.igalata.bubblepicker.rendering.BubblePicker;
@@ -22,7 +20,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 import zielabi.icon_worldwide.com.zielabi.R;
-import zielabi.icon_worldwide.com.zielabi.activities.TargetABIActivity;
 
 public class BubbleAdapter extends RecyclerView.Adapter<BubbleAdapter.MyViewHolder> {
 

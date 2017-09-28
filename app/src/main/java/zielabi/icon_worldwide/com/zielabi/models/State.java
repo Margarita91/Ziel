@@ -1,10 +1,12 @@
 package zielabi.icon_worldwide.com.zielabi.models;
 
+import java.io.Serializable;
+
 /**
  * Created by margarita on 23/08/2017.
  */
 
-public class State {
+public class State  implements Serializable {
 
 
     private String mStateName;
@@ -26,6 +28,8 @@ public class State {
     private boolean mIsAutoAssignFactor;
     private AssignFactor mAssignFactorTo;
     private boolean mIsMagic;
+    private int mType;
+
     public State(){}
     public State(String stateName){
         mStateName = stateName;
@@ -202,5 +206,9 @@ public class State {
 
     public void setAssignFactorTo(AssignFactor assignFactorTo) {
         mAssignFactorTo = assignFactorTo;
+    }
+
+    public int getType() {
+        return mType;
     }
 }

@@ -3,13 +3,7 @@ package zielabi.icon_worldwide.com.zielabi;
 import android.app.Application;
 import android.content.Context;
 
-import java.util.ArrayList;
-
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-import zielabi.icon_worldwide.com.zielabi.models.AssignFactor;
-import zielabi.icon_worldwide.com.zielabi.models.CourseMultiplier;
-import zielabi.icon_worldwide.com.zielabi.models.State;
-import zielabi.icon_worldwide.com.zielabi.utils.TypefaceUtil;
 
 /**
  * Created by margarita on 23/08/2017.

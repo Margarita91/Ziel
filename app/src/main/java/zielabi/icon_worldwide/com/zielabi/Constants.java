@@ -13,6 +13,7 @@ import zielabi.icon_worldwide.com.zielabi.models.State;
 public class Constants {
     static String adURL = "http://fs.de/bachelorday?utm_source=abirechner&utm_campaign=abirechner";
 
+    public static final String SELECTED_SUBJECTS="SelectedSubjects";
 
 
     public static ArrayList<State> initStatesList() {

@@ -1,5 +1,6 @@
 package zielabi.icon_worldwide.com.zielabi.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  * Created by margarita on 23/08/2017.
  */
 
-public class CourseMultiplier {
+public class CourseMultiplier  implements Serializable {
 
     private List<Integer> mSemesterGradeMultipliers = new ArrayList<>();
 

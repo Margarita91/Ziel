@@ -230,14 +230,14 @@ public class WheelView<T> extends ListView implements IWheelView<T> {
                     getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 }
                 if (getChildCount() > 0 && mItemH == 0) {
-                    mItemH = getChildAt(0).getHeight() + 40;
+                    mItemH = getChildAt(0).getHeight();
                     if (mItemH != 0) {
                         ViewGroup.LayoutParams params = getLayoutParams();
                         params.height = mItemH * mWheelSize;
                         refreshVisibleItems(getFirstVisiblePosition(),
                                 getCurrentPosition() + mWheelSize / 2,
                                 mWheelSize / 2);
-                        setBackground();
+                     //  setBackground();
                     } else {
                         throw new WheelViewException("wheel item is error.");
                     }
@@ -267,15 +267,15 @@ public class WheelView<T> extends ListView implements IWheelView<T> {
     /**
      * 设置背景
      */
-    private void setBackground() {
-        Drawable drawable = DrawableFactory.createDrawable(mSkin, getWidth(),
-                mItemH * mWheelSize, mStyle, mWheelSize, mItemH);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            setBackground(drawable);
-        } else {
-            setBackgroundDrawable(drawable);
-        }
-    }
+//    private void setBackground() {
+//        Drawable drawable = DrawableFactory.createDrawable(mSkin, getWidth(),
+//                mItemH * mWheelSize, mStyle, mWheelSize, mItemH);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+//            setBackground(drawable);
+//        } else {
+//            setBackgroundDrawable(drawable);
+//        }
+//    }
 
     /**
      * 获得皮肤风格
@@ -378,7 +378,7 @@ public class WheelView<T> extends ListView implements IWheelView<T> {
     @Override
     public void setSelection(final int selection) {
         mSelection = selection;
-        setVisibility(View.INVISIBLE);
+       // setVisibility(View.INVISIBLE);
         WheelView.this.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -550,7 +550,7 @@ public class WheelView<T> extends ListView implements IWheelView<T> {
             return;
         }
         int position = 0;
-        if (Math.abs(getChildAt(0).getY()) <= (mItemH) / 2) {
+        if (Math.abs(getChildAt(0).getY()) <= mItemH / 2) {
             position = firstPosition;
         } else {
             position = firstPosition + 1;
@@ -613,20 +613,22 @@ public class WheelView<T> extends ListView implements IWheelView<T> {
             int textColor = mStyle.selectedTextColor != -1 ? mStyle
                     .selectedTextColor : (mStyle.textColor != -1 ? mStyle
                     .textColor : WheelConstants.WHEEL_TEXT_COLOR);
-            float defTextSize = mStyle.textSize != -1 ? mStyle.textSize : WheelConstants.WHEEL_TEXT_SIZE;
+            float defTextSize = mStyle.textSize != -1 ? mStyle.textSize : WheelConstants.WHEEL_TEXT_SIZE_SELECTED;
             float textSize = mStyle.selectedTextSize != -1 ? mStyle
                     .selectedTextSize : (mStyle.selectedTextZoom != -1 ? (defTextSize * mStyle.selectedTextZoom) :
                     defTextSize);
-            setTextView(itemView, textView, textColor, textSize, 1.0f, 150);
+            textView.setPadding(60, 0, 0 ,0);
+            setTextView(itemView, textView, textColor, textSize, 1.0f);
         } else {    // 未选中
             int textColor = mStyle.textColor != -1 ? mStyle.textColor :
                     WheelConstants.WHEEL_TEXT_COLOR;
-            float textSize = mStyle.textSize != -1 ?34 :
-                    34;
+            float textSize = mStyle.textSize != -1 ? mStyle.textSize :
+                    WheelConstants.WHEEL_TEXT_SIZE;
+            textView.setPadding(20, 0, 0 ,0);
             int delta = Math.abs(position - curPosition);
             float alpha = (float) Math.pow(mStyle.textAlpha != -1 ? mStyle.textAlpha : WheelConstants
                     .WHEEL_TEXT_ALPHA, delta);
-            setTextView(itemView, textView, textColor, textSize, alpha, 100);
+            setTextView(itemView, textView, textColor, textSize, alpha);
         }
     }
 
@@ -639,10 +641,9 @@ public class WheelView<T> extends ListView implements IWheelView<T> {
      * @param textSize
      * @param textAlpha
      */
-    private void setTextView(View itemView, TextView textView, int textColor, float textSize, float textAlpha, int extraPadding) {
+    private void setTextView(View itemView, TextView textView, int textColor, float textSize, float textAlpha) {
         textView.setTextColor(textColor);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, textSize);
-        textView.setPadding(1000, 40, 100, 40);
         itemView.setAlpha(textAlpha);
     }
 

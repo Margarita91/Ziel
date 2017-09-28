@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,7 +26,7 @@ public class TimerActivity extends BaseActivity {
     private TextView mCounterTextView;
     private TextView mContinueTextView;
     private ImageView mButtonBack;
-
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
         ActivityAnimationUtils.goBackAnimation(TimerActivity.this);
@@ -89,7 +88,7 @@ public class TimerActivity extends BaseActivity {
         mContinueTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TimerActivity.this, TargetABIActivity.class);
+                Intent intent = new Intent(TimerActivity.this, PreferencesActivity.class);
                 startActivity(intent);
                 ActivityAnimationUtils.startActivityAnimation(TimerActivity.this);
 

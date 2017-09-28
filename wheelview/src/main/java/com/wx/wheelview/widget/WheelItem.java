@@ -65,7 +65,7 @@ public class WheelItem extends FrameLayout {
         layout.setOrientation(LinearLayout.HORIZONTAL);
         layout.setPadding(WheelConstants.WHEEL_ITEM_PADDING, WheelConstants.WHEEL_ITEM_PADDING, WheelConstants
                 .WHEEL_ITEM_PADDING, WheelConstants.WHEEL_ITEM_PADDING);
-        layout.setGravity(Gravity.CENTER);
+        layout.setGravity(Gravity.LEFT);
         addView(layout, layoutParams);
 
         // 图片
@@ -82,7 +82,8 @@ public class WheelItem extends FrameLayout {
         mText.setEllipsize(TextUtils.TruncateAt.END);
         mText.setSingleLine();
         mText.setIncludeFontPadding(false);
-        mText.setTextColor(WheelConstants.WHEEL_TEXT_COLOR);
+        mText.setGravity(Gravity.LEFT);
+        mText.setTextColor(Color.BLACK);
         LayoutParams textParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         layout.addView(mText, textParams);
     }

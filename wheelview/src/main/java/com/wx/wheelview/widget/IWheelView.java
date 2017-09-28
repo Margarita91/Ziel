@@ -35,7 +35,7 @@ public interface IWheelView<T> {
     /**
      * 滚轮默认数量
      */
-    int WHEEL_SIZE = 3;
+    int WHEEL_SIZE = 13;
 
     /**
      * 滚轮选中刻度是否可点击

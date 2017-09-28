@@ -46,7 +46,9 @@ dependencies {
     compile project(':bubblepicker')
     compile project(':wheelview')
     compile 'uk.co.chrisjenx:calligraphy:2.3.0'
-
+    compile project(':iosswitch')
+    compile 'com.balysv:material-ripple:1.0.2'
+    compile project(':stickyheaders')
 }
 repositories {
     mavenCentral()

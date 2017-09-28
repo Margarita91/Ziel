@@ -10,7 +10,9 @@ buildscript {
     dependencies {
 
         classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.3"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -31,4 +33,24 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+ext{
+    compileSdkVersion = 24
+    buildToolsVersion = "24"
+
+    minSdkVersion = 11
+    targetSdkVersion = 24
+    versionCode = 1006
+    versionName = "0.6"
+
+    pomPackaging = "aar"
+    pomName = "iosswitch"
+    pomLicenseName = "The Apache Software License, Version 2.0"
+    pomLicenseShort = "Apache-2.0"
+    pomLicenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+
+    pomSiteUrl = 'https://github.com/7heaven/SHSwitchView'
+    pomGitUrl = 'https://github.com/7heaven/SHSwitchView.git'
+
+    pomGroup = "com.7heaven.ioswidget"
 }

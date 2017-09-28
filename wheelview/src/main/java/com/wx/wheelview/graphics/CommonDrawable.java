@@ -31,9 +31,9 @@ public class CommonDrawable extends WheelDrawable {
 
     private static final int[] SHADOWS_COLORS =
             {
-                    0xf2f2f2,
-                    0xf2f2f2,
-                    0xf2f2f2
+                    0xFFFFFFFF,
+                    0xFFFFFFFF,
+                    0xFFFFFFFF
             };  // 阴影色值
 
     private GradientDrawable mTopShadow = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
@@ -50,7 +50,7 @@ public class CommonDrawable extends WheelDrawable {
         super(width, height, style);
         mWheelSize = wheelSize;
         mItemH = itemH;
-        init();
+       // init();
     }
 
     private void init() {
@@ -63,10 +63,10 @@ public class CommonDrawable extends WheelDrawable {
 
         mCommonDividerPaint = new Paint();
         mCommonDividerPaint.setColor(WheelConstants.WHEEL_SKIN_COMMON_DIVIDER_COLOR);
-        mCommonDividerPaint.setStrokeWidth(2);
+        mCommonDividerPaint.setStrokeWidth(0);
 
         mCommonBorderPaint = new Paint();
-        mCommonBorderPaint.setStrokeWidth(6);
+        mCommonBorderPaint.setStrokeWidth(0);
         mCommonBorderPaint.setColor(WheelConstants.WHEEL_SKIN_COMMON_BORDER_COLOR);
 
     }
@@ -74,27 +74,27 @@ public class CommonDrawable extends WheelDrawable {
     @Override
     public void draw(Canvas canvas) {
         // draw background
-        canvas.drawRect(0, 0, mWidth, mHeight, mCommonBgPaint);
-
-        // draw select border
-        if (mItemH != 0) {
-            canvas.drawRect(0, mItemH * (mWheelSize / 2), mWidth, mItemH
-                    * (mWheelSize / 2 + 1), mCommonPaint);
-            canvas.drawLine(0, mItemH * (mWheelSize / 2), mWidth, mItemH
-                    * (mWheelSize / 2), mCommonDividerPaint);
-            canvas.drawLine(0, mItemH * (mWheelSize / 2 + 1), mWidth, mItemH
-                    * (mWheelSize / 2 + 1), mCommonDividerPaint);
-
-            // top, bottom
-          //  mTopShadow.setBounds(0, 0, mWidth, mItemH);
-         //   mTopShadow.draw(canvas);
-
-          //  mBottomShadow.setBounds(0, mHeight - mItemH, mWidth, mHeight);
-            //mBottomShadow.draw(canvas);
+//        canvas.drawRect(0, 0, mWidth, mHeight, mCommonBgPaint);
 //
-            // left,right
-            canvas.drawLine(0, 0, 0, mHeight, mCommonBorderPaint);
-            canvas.drawLine(mWidth, 0, mWidth, mHeight, mCommonBorderPaint);
-        }
+//        // draw select border
+//        if (mItemH != 0) {
+//            canvas.drawRect(0, mItemH * (mWheelSize / 2), mWidth, mItemH
+//                    * (mWheelSize / 2 + 1), mCommonPaint);
+//            canvas.drawLine(0, mItemH * (mWheelSize / 2), mWidth, mItemH
+//                    * (mWheelSize / 2), mCommonDividerPaint);
+//            canvas.drawLine(0, mItemH * (mWheelSize / 2 + 1), mWidth, mItemH
+//                    * (mWheelSize / 2 + 1), mCommonDividerPaint);
+//
+//            // top, bottom
+////            mTopShadow.setBounds(0, 0, mWidth, mItemH);
+////            mTopShadow.draw(canvas);
+////
+////            mBottomShadow.setBounds(0, mHeight - mItemH, mWidth, mHeight);
+////            mBottomShadow.draw(canvas);
+//
+//            // left,right
+//            canvas.drawLine(0, 0, 0, mHeight, mCommonBorderPaint);
+//            canvas.drawLine(mWidth, 0, mWidth, mHeight, mCommonBorderPaint);
+       // }
     }
 }
