@@ -68,6 +68,7 @@ public class TargetABIActivity extends BaseActivity implements View.OnClickListe
 
 
         for (int i = 0; i < getResources().getStringArray(R.array.subjects).length;++i){
+            mCourse = new Course();
             mCourse.setCourseTitle(getResources().getStringArray(R.array.subjects)[i]);
             mCourse.setCourseType("0");
             mSelectedCourses.add(mCourse);

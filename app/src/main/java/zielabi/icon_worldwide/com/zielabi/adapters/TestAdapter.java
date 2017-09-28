@@ -1,15 +1,11 @@
 package zielabi.icon_worldwide.com.zielabi.adapters;
 
 import android.annotation.SuppressLint;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.google.android.gms.plus.model.people.Person;
 
 import org.zakariya.stickyheaders.SectioningAdapter;
 
@@ -21,59 +17,28 @@ import java.util.Locale;
 import java.util.Map;
 
 import zielabi.icon_worldwide.com.zielabi.R;
-import zielabi.icon_worldwide.com.zielabi.ZielAbiApplication;
-import zielabi.icon_worldwide.com.zielabi.databinding.ItemExamSubjectBinding;
 import zielabi.icon_worldwide.com.zielabi.models.Course;
 
 /**
- * Created by margarita on 9/3/17.
+ * Created by margarita on 9/28/17.
  */
 
-public class ExamsSubjectsAdapter extends SectioningAdapter {
+public class TestAdapter extends SectioningAdapter  {
 
-
+    Locale locale = Locale.getDefault();
     static final boolean USE_DEBUG_APPEARANCE = false;
-    private ItemExamSubjectBinding binding;
-
 
     private class Section {
-        String type;
-        ArrayList<Course> mCourses = new ArrayList<>();
+        String alpha;
+        ArrayList<Course> people = new ArrayList<>();
     }
 
     public class ItemViewHolder extends SectioningAdapter.ItemViewHolder {
-
-        private TextView mTxtSubject;
-
-        private int mSelectedExam = R.id.txt_q1_value;
-
-        private void initViews() {
-
-           // mTxtQ1 = binding.txtQ1Value;
-//            mTxtQ2 = binding.txtQ2Value;
-//            mTxtQ3 = binding.txtQ3Value;
-//            mTxtQ4 = binding.txtQ4Value;
-//            mTxtS = binding.txtSValue;
-//            mTxtSM = binding.txtSmValue;
-//
-//            mTxtQ1Ly = binding.txtQ1ValueLy;
-//            mTxtQ2Ly = binding.txtQ2ValueLy;
-//            mTxtQ3Ly = binding.txtQ3ValueLy;
-//            mTxtQ4Ly = binding.txtQ4ValueLy;
-//            mTxtSLy = binding.txtSValueLy;
-//            mTxtSMLy = binding.txtSmValueLy;
-//            mTxtSubject = binding.txtSubject;
-
-
-            //xmTxtQ1Ly.setBackgroundResource(R.drawable.selector_red_border_background);
-
-
-
-        }
+        TextView personNameTextView;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
-            mTxtSubject = itemView.findViewById(R.id.txt_subject);
+            personNameTextView = (TextView) itemView.findViewById(R.id.txt_subject);
         }
     }
 
@@ -87,23 +52,23 @@ public class ExamsSubjectsAdapter extends SectioningAdapter {
     }
 
 
-    List<Course> courses;
+    List<Course> people;
     ArrayList<Section> sections = new ArrayList<>();
 
-    public ExamsSubjectsAdapter() {
+    public TestAdapter() {
     }
 
-    public List<Course> getCourses() {
-        return courses;
+    public List<Course> getPeople() {
+        return people;
     }
 
     public void setCourses(List<Course> courses) {
-        this.courses = courses;
+        this.people = courses;
         sections.clear();
 
         Map<String, ArrayList<Course>> buckets = new HashMap<String, ArrayList<Course>>();
         for (Course course : courses) {
-            Log.i("119", course.getCourseType());
+            Log.i("119", course.getCourseType()+ course.getCourseTitle());
             if (!buckets.containsKey(course.getCourseType())) {
                 buckets.put(course.getCourseType(), new ArrayList<Course>());
             }
@@ -113,9 +78,9 @@ public class ExamsSubjectsAdapter extends SectioningAdapter {
         while (it.hasNext()) {
             Map.Entry<String, ArrayList<Course>> entry = (Map.Entry)it.next();
             Section currentSection = new Section();
-            currentSection.type = entry.getKey();
+            currentSection.alpha = entry.getKey();
             for (int i = 0; i < entry.getValue().size(); ++i) {
-                currentSection.mCourses.add(entry.getValue().get(i));
+                currentSection.people.add(entry.getValue().get(i));
             }
             sections.add(currentSection);
         }
@@ -129,7 +94,7 @@ public class ExamsSubjectsAdapter extends SectioningAdapter {
 
     @Override
     public int getNumberOfItemsInSection(int sectionIndex) {
-        return sections.get(sectionIndex).mCourses.size();
+        return sections.get(sectionIndex).people.size();
     }
 
     @Override
@@ -146,14 +111,12 @@ public class ExamsSubjectsAdapter extends SectioningAdapter {
     public ItemViewHolder onCreateItemViewHolder(ViewGroup parent, int itemType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View v = inflater.inflate(R.layout.item_exam_subject, parent, false);
-        binding = ItemExamSubjectBinding.inflate(inflater, parent, true);
         return new ItemViewHolder(v);
     }
 
     @Override
     public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent, int headerType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        binding = ItemExamSubjectBinding.inflate(inflater, parent, true);
         View v = inflater.inflate(R.layout.list_item_subject_header, parent, false);
         return new HeaderViewHolder(v);
     }
@@ -163,10 +126,9 @@ public class ExamsSubjectsAdapter extends SectioningAdapter {
     public void onBindItemViewHolder(SectioningAdapter.ItemViewHolder viewHolder, int sectionIndex, int itemIndex, int itemType) {
         Section s = sections.get(sectionIndex);
         ItemViewHolder ivh = (ItemViewHolder) viewHolder;
-        Course course = s.mCourses.get(itemIndex);
-        ivh.mTxtSubject.setText(course.getCourseTitle());
-
-}
+        Course person = s.people.get(itemIndex);
+        ivh.personNameTextView.setText(person.getCourseTitle());
+    }
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -174,14 +136,17 @@ public class ExamsSubjectsAdapter extends SectioningAdapter {
         Section s = sections.get(sectionIndex);
         HeaderViewHolder hvh = (HeaderViewHolder) viewHolder;
 
-
-            hvh.titleTextView.setText(s.type);
-
+        if (USE_DEBUG_APPEARANCE) {
+            hvh.itemView.setBackgroundColor(0x55ffffff);
+            hvh.titleTextView.setText(pad(sectionIndex * 2) + s.alpha);
+        } else {
+            hvh.titleTextView.setText(s.alpha);
+        }
     }
 
     private String capitalize(String s) {
         if (s != null && s.length() > 0) {
-            return s.substring(0, 1) + s.substring(1);
+            return s.substring(0,1).toUpperCase(locale) + s.substring(1);
         }
 
         return "";
